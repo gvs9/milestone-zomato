@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gourmet AI - Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@600;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#2e3038",
+                      "secondary-fixed-dim": "#edc157",
+                      "surface-bright": "#373941",
+                      "on-secondary-fixed": "#251a00",
+                      "surface-container": "#1d1f26",
+                      "on-secondary-fixed-variant": "#5b4300",
+                      "secondary-container": "#906d00",
+                      "primary-fixed-dim": "#ffb3b1",
+                      "on-surface": "#e2e2ec",
+                      "secondary": "#edc157",
+                      "primary": "#ffb3b1",
+                      "on-primary": "#680011",
+                      "tertiary-fixed-dim": "#4ae183",
+                      "surface-container-high": "#282a31",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#33343c",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#11131a",
+                      "on-primary-fixed": "#410007",
+                      "tertiary": "#4ae183",
+                      "secondary-fixed": "#ffdf9b",
+                      "surface-tint": "#ffb3b1",
+                      "surface-container-lowest": "#0c0e15",
+                      "primary-fixed": "#ffdad8",
+                      "on-surface-variant": "#e4bebc",
+                      "primary-container": "#ff535a",
+                      "on-secondary-container": "#fff7ee",
+                      "on-secondary": "#3f2e00",
+                      "outline-variant": "#5b403f",
+                      "surface": "#11131a",
+                      "inverse-primary": "#bb162c",
+                      "tertiary-container": "#00a657",
+                      "on-primary-fixed-variant": "#92001c",
+                      "inverse-surface": "#e2e2ec",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#e2e2ec",
+                      "error-container": "#93000a",
+                      "surface-variant": "#33343c",
+                      "tertiary-fixed": "#6bfe9c",
+                      "on-tertiary": "#003919",
+                      "on-primary-container": "#5b000e",
+                      "outline": "#ab8987",
+                      "on-tertiary-fixed-variant": "#005228",
+                      "on-tertiary-container": "#003115",
+                      "background": "#11131a",
+                      "on-tertiary-fixed": "#00210c",
+                      "surface-container-low": "#191b22"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "8px",
+                      "xl": "32px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "sm": "12px",
+                      "gutter": "20px",
+                      "lg": "24px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Outfit"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Outfit"
+                      ],
+                      "headline-lg": [
+                              "Outfit"
+                      ],
+                      "headline-lg-mobile": [
+                              "Outfit"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        /* Card animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card-anim {
+            opacity: 0;
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        #state-results .card-anim:nth-child(1) { animation-delay: 0.1s; }
+        #state-results .card-anim:nth-child(2) { animation-delay: 0.2s; }
+        #state-results .card-anim:nth-child(3) { animation-delay: 0.3s; }
+        #state-results .card-anim:nth-child(4) { animation-delay: 0.4s; }
+        #state-results .card-anim:nth-child(5) { animation-delay: 0.5s; }
+
+        .ai-border {
+            position: relative;
+        }
+        
+        .ai-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, theme('colors.primary-container'), theme('colors.secondary-container'));
+            z-index: -1;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .hover-glow:hover .ai-border::before {
+            opacity: 1;
+            filter: blur(8px);
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(29, 31, 38, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid theme('colors.surface-variant');
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, theme('colors.surface-variant') 0%, theme('colors.surface-container-high') 50%, theme('colors.surface-variant') 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex overflow-hidden">
+<!-- SIDEBAR COMPONENT -->
+<aside class="w-[320px] fixed left-0 top-0 h-screen overflow-y-auto border-r border-outline-variant bg-surface-container flex flex-col p-lg gap-md z-20 shadow-sm hidden md:flex shrink-0">
+<!-- Brand/Header -->
+<div class="mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Foodie Elite</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AI Gourmet Guide</p>
+</div>
+<h2 class="font-headline-md text-headline-md mb-md text-on-surface">🍽️ Your Preferences</h2>
+<!-- Filters Form -->
+<div class="flex flex-col gap-lg flex-1">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg pl-xl pr-sm py-sm font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container hover:shadow-[0_0_10px_rgba(255,83,90,0.2)] transition-all" type="text" value="Bangalore"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Budget</label>
+<div class="flex gap-xs">
+<button class="flex-1 py-xs rounded-lg border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-container-high hover:border-primary-container hover:shadow-[0_0_10px_rgba(255,83,90,0.2)] transition-all">₹</button>
+<button class="flex-1 py-xs rounded-lg bg-primary-container text-on-primary-container font-label-md border-none font-bold hover:shadow-[0_0_15px_rgba(255,83,90,0.4)] transition-all">₹₹</button>
+<button class="flex-1 py-xs rounded-lg border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-container-high hover:border-primary-container hover:shadow-[0_0_10px_rgba(255,83,90,0.2)] transition-all">₹₹₹</button>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Cuisine</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">restaurant_menu</span>
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg pl-xl pr-sm py-sm font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container hover:shadow-[0_0_10px_rgba(255,83,90,0.2)] transition-all" type="text" value="Italian"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant flex justify-between">
+<span>Minimum Rating</span>
+<span class="text-secondary font-bold">4.0 / 5.0</span>
+</label>
+<input class="w-full h-2 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-secondary hover:shadow-[0_0_10px_rgba(255,83,90,0.3)] transition-all" max="5" min="1" step="0.1" type="range" value="4.0"/>
+</div>
+</div>
+<!-- CTA & Status -->
+<div class="mt-auto space-y-md">
+<button class="w-full py-sm rounded-xl bg-primary-container text-on-primary-container font-headline-md text-label-md font-bold hover:bg-primary transition-all active:scale-95 shadow-[0_0_20px_rgba(255,83,90,0.2)] hover:shadow-[0_0_25px_rgba(255,83,90,0.4)]" id="btn-recommend">
+<span class="flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+                    Get Recommendations
+                </span>
+</button>
+<div class="flex items-center justify-center gap-xs font-label-sm text-label-sm text-tertiary opacity-80 pb-xs">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+                AI Powered
+            </div>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<main class="flex-1 ml-0 md:ml-[320px] h-screen overflow-y-auto bg-background relative flex flex-col scroll-smooth">
+<!-- TOP APP BAR -->
+<header class="sticky top-0 z-10 w-full h-16 bg-surface/80 backdrop-blur-xl border-b border-outline-variant flex justify-between items-center px-margin-desktop md:px-lg">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-lg-mobile text-headline-md font-black text-primary">Gourmet AI</h1>
+</div>
+<nav class="hidden lg:flex items-center gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md" href="#">Trending</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md" href="#">New Openings</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Discovery</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-xs rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-xs rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="bg-primary-container text-on-primary-container px-md py-xs rounded-lg font-label-md text-label-md font-bold hidden sm:block">
+                    Reserve Now
+                </button>
+</div>
+</header>
+<!-- RESULTS CANVAS -->
+<div class="flex-1 p-margin-mobile md:p-margin-desktop max-w-5xl mx-auto w-full flex flex-col gap-xl">
+<!-- WELCOME STATE -->
+<div class="flex flex-col items-center justify-center flex-1 min-h-[60vh] text-center fade-in" id="state-welcome">
+<div class="text-[80px] md:text-[100px] mb-lg animate-bounce">🍕🍜🍛🥘</div>
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface mb-sm">What are you craving today?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Fill in preferences and hit Recommend</p>
+</div>
+<!-- LOADING STATE -->
+<div class="hidden flex-1 w-full flex flex-col gap-xl" id="state-loading">
+<div class="text-center space-y-sm mt-md">
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface">🍽️ Zomato AI Recommender</h2>
+<div class="flex justify-center gap-sm mt-md h-8 items-center">
+<div class="w-3 h-3 rounded-full bg-primary-container animate-pulse"></div>
+<div class="w-3 h-3 rounded-full bg-primary-container animate-pulse" style="animation-delay: 0.2s"></div>
+<div class="w-3 h-3 rounded-full bg-primary-container animate-pulse" style="animation-delay: 0.4s"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-lg pb-xl w-full">
+<div class="bg-surface-container rounded-xl h-[200px] sm:h-[240px] border border-outline-variant flex flex-col sm:flex-row overflow-hidden">
+<div class="sm:w-[300px] h-full shimmer shrink-0"></div>
+<div class="p-lg flex-1 flex flex-col justify-between">
+<div class="space-y-md">
+<div class="h-8 rounded w-2/3 shimmer"></div>
+<div class="h-4 rounded w-1/3 shimmer"></div>
+</div>
+<div class="h-24 rounded w-full shimmer mt-md"></div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl h-[200px] sm:h-[240px] border border-outline-variant flex flex-col sm:flex-row overflow-hidden">
+<div class="sm:w-[300px] h-full shimmer shrink-0"></div>
+<div class="p-lg flex-1 flex flex-col justify-between">
+<div class="space-y-md">
+<div class="h-8 rounded w-1/2 shimmer"></div>
+<div class="h-4 rounded w-1/4 shimmer"></div>
+</div>
+<div class="h-24 rounded w-full shimmer mt-md"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- RESULTS STATE -->
+<div class="hidden flex-col gap-xl" id="state-results">
+<!-- Page Header -->
+<div class="text-center space-y-sm mt-md">
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface">🍽️ Zomato AI Recommender</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Discover your next favourite restaurant</p>
+<div class="inline-flex items-center gap-sm mt-sm bg-surface-container px-sm py-xs rounded-full border border-outline-variant">
+<span class="font-label-sm text-label-sm text-on-surface-variant">51,717 restaurants • 62 localities</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-base">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+                            Powered by Groq LLaMA 3.3
+                        </span>
+</div>
+</div>
+<!-- Summary Banner -->
+<div class="glass-panel p-md rounded-xl text-center shadow-lg ai-border card-anim mt-md">
+<p class="font-body-md text-body-md italic text-on-surface-variant">
+                        "Here are the best <strong class="text-on-surface not-italic">Italian</strong> restaurants in <strong class="text-on-surface not-italic">Bangalore</strong> matching your <strong class="text-on-surface not-italic">medium</strong> budget."
+                    </p>
+</div>
+<!-- Results Grid -->
+<div class="grid grid-cols-1 gap-lg pb-xl">
+<!-- Card 1 -->
+<article class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant flex flex-col sm:flex-row hover-glow card-anim group cursor-pointer transition-transform hover:-translate-y-1">
+<div class="relative sm:w-[300px] h-[200px] sm:h-auto shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high resolution, beautifully styled, close-up photograph of authentic wood-fired Italian pizza on a rustic wooden table in a high-end restaurant. The lighting is warm and moody, highlighting the melted cheese and charred crust. The background is softly blurred with deep blacks and warm golden ambient light, fitting a modern, premium food app aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCugPa6iD9XLQk66ZEfwVoQjncHwNZ6Q_wvkNzsXQWxAvgrjyP-NjqQabcIbC3hG1eA8tUV-K4d5slHA8gBjFO-fA2Wk5f7ZZ3UYIbP1FSu8h45fzJwc2jggcumyoHkMl2iXMmWSH1jFMF7xUGr8Mun55Nmix_qN4a75IEZmCy_i5mGAgwmXMxvYgdfzjiEgMb9-xfHQshKSNK4bHXbtaJl4cyxOCAzri5hZ1JAuousMkcdn9XoX_db"/>
+<div class="absolute top-sm right-sm bg-surface/80 backdrop-blur-md px-sm py-base rounded-lg border border-secondary/30 flex items-center gap-base shadow-lg">
+<span class="text-secondary font-bold font-label-md">4.8</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="absolute top-sm left-sm bg-secondary-container/90 text-on-secondary-container backdrop-blur-md w-8 h-8 rounded-full flex items-center justify-center font-bold font-label-md border border-secondary shadow-lg">
+                                #1
+                            </div>
+</div>
+<div class="p-lg flex flex-col justify-between flex-1 ai-border bg-surface-container">
+<div>
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">The Globe Grub</h3>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-high px-sm py-base rounded-md">₹1,300 for two</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-base mb-md">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Marathahalli, Bangalore
+                                </p>
+<div class="bg-surface-container-high rounded-lg p-sm border border-outline-variant relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm pl-sm">
+<span class="text-primary-container font-bold font-label-sm uppercase tracking-wider block mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span> AI Reason
+                                        </span>
+                                        Top-rated dining spot offering authentic Italian cuisine with exceptional ambiance and prompt service. Highly recommended for couples.
+                                    </p>
+</div>
+</div>
+<div class="mt-md flex gap-sm">
+<button class="bg-primary-container text-on-primary-container px-md py-xs rounded-lg font-label-md font-bold hover:bg-primary transition-colors flex-1 text-center">Book Table</button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant flex flex-col sm:flex-row hover-glow card-anim group cursor-pointer transition-transform hover:-translate-y-1">
+<div class="relative sm:w-[300px] h-[200px] sm:h-auto shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high quality, stylized photograph of a rich, creamy truffle pasta dish served in a wide, elegant dark ceramic bowl. The lighting is dramatic and directional, creating a premium, dark luxury vibe with high contrast. The mood is sophisticated dining. The color palette features deep greys, blacks, and the warm, earthy tones of the pasta." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQBl678kuu1j7NYhbkbWv0aRzQpux4H8ZS97IibYIx-Y5Hi5B31IzonahBcKxqqcERKxQCtSjqV2wtr1FUti26dQ5-XcE2rSybdVHQ_UYV5kODcw2eDYipA3zx8cUFgnd6r4EGF2A86ysxd-LNuJePKNcGtriDoXmwOBgkqW97FI4547v5XAfrgzryRN-bNg0YKtgss-6QAAGC2rkzomDdc3ZY15lTuY9e0BbaPwiUF57wlMhHhFuA"/>
+<div class="absolute top-sm right-sm bg-surface/80 backdrop-blur-md px-sm py-base rounded-lg border border-secondary/30 flex items-center gap-base shadow-lg">
+<span class="text-secondary font-bold font-label-md">4.8</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="absolute top-sm left-sm bg-surface-container-high/90 text-on-surface backdrop-blur-md w-8 h-8 rounded-full flex items-center justify-center font-bold font-label-md border border-outline-variant shadow-lg">
+                                #2
+                            </div>
+</div>
+<div class="p-lg flex flex-col justify-between flex-1 ai-border bg-surface-container">
+<div>
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">The Pizza Bakery</h3>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-high px-sm py-base rounded-md">₹1,200 for two</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-base mb-md">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Indiranagar, Bangalore
+                                </p>
+<div class="bg-surface-container-high rounded-lg p-sm border border-outline-variant relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm pl-sm">
+<span class="text-primary-container font-bold font-label-sm uppercase tracking-wider block mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span> AI Reason
+                                        </span>
+                                        Famous for their sourdough pizzas and stuffed garlic bread. A must-visit for casual Italian cravings in a bustling neighborhood.
+                                    </p>
+</div>
+</div>
+<div class="mt-md flex gap-sm">
+<button class="border border-outline-variant text-on-surface px-md py-xs rounded-lg font-label-md font-bold hover:bg-surface-container-high transition-colors flex-1 text-center">View Menu</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- EMPTY STATE -->
+<div class="hidden flex-col items-center justify-center flex-1 min-h-[60vh] text-center" id="state-empty">
+<div class="text-[80px] md:text-[100px] mb-lg opacity-80">🍽️</div>
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface mb-sm">No restaurants found</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">Try adjusting your filters or explore these suggestions:</p>
+<div class="flex flex-wrap justify-center gap-sm">
+<button class="px-lg py-sm rounded-full border border-outline-variant text-on-surface font-label-md hover:bg-surface-container-high transition-colors hover:border-primary-container">Sushi</button>
+<button class="px-lg py-sm rounded-full border border-outline-variant text-on-surface font-label-md hover:bg-surface-container-high transition-colors hover:border-primary-container">Burgers</button>
+<button class="px-lg py-sm rounded-full border border-outline-variant text-on-surface font-label-md hover:bg-surface-container-high transition-colors hover:border-primary-container">Vegan Options</button>
+</div>
+</div>
+<!-- Footer Component inside main scroll area -->
+<footer class="w-full py-xl mt-auto border-t border-outline-variant bg-surface-dim flex flex-col items-center justify-center gap-xs">
+<div class="font-label-md text-label-md font-bold text-on-surface">Gourmet AI</div>
+<div class="flex gap-md mt-sm">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Data Sources</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">API Status</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Contact</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-sm">© 2024 Gourmet AI Discovery. All culinary rights reserved.</p>
+</footer>
+</div>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnRecommend = document.getElementById('btn-recommend');
+        const stateWelcome = document.getElementById('state-welcome');
+        const stateLoading = document.getElementById('state-loading');
+        const stateResults = document.getElementById('state-results');
+        const stateEmpty = document.getElementById('state-empty');
+
+        function setState(state) {
+            stateWelcome.classList.add('hidden');
+            stateWelcome.classList.remove('flex');
+            
+            stateLoading.classList.add('hidden');
+            stateLoading.classList.remove('flex');
+            
+            stateResults.classList.add('hidden');
+            stateResults.classList.remove('flex');
+            
+            stateEmpty.classList.add('hidden');
+            stateEmpty.classList.remove('flex');
+
+            if (state === 'welcome') {
+                stateWelcome.classList.remove('hidden');
+                stateWelcome.classList.add('flex');
+            } else if (state === 'loading') {
+                stateLoading.classList.remove('hidden');
+                stateLoading.classList.add('flex');
+            } else if (state === 'results') {
+                stateResults.classList.remove('hidden');
+                stateResults.classList.add('flex');
+                
+                // Retrigger animations
+                const cards = stateResults.querySelectorAll('.card-anim');
+                cards.forEach(card => {
+                    card.style.animation = 'none';
+                    card.offsetHeight; /* trigger reflow */
+                    card.style.animation = null; 
+                });
+            } else if (state === 'empty') {
+                stateEmpty.classList.remove('hidden');
+                stateEmpty.classList.add('flex');
+            }
+            
+            // Scroll to top of main area
+            document.querySelector('main').scrollTo(0, 0);
+        }
+
+        btnRecommend.addEventListener('click', () => {
+            setState('loading');
+            
+            // Simulate API call
+            setTimeout(() => {
+                setState('results'); // Or 'empty' based on logic
+            }, 3000);
+        });
+        
+        // Initial state is welcome
+        setState('welcome');
+    });
+</script>
+</body></html>
