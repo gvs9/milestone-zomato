@@ -49,8 +49,8 @@ class DatasetLoader:
         if not restaurants and prefer_local:
             restaurants = self._try_load_parquet_cache()
 
-        # Try Hugging Face if explicitly requested / online
-        if not restaurants and not prefer_local:
+        # Try Hugging Face if local cache is not available
+        if not restaurants:
             restaurants = self._try_load_huggingface()
 
         # If not loaded, use bundled seed dataset and persist to local cache
