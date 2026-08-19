@@ -36,6 +36,20 @@ def _load_env_file(env_path: Path) -> None:
 
 _load_env_file(ENV_FILE)
 
+# Streamlit Cloud deployment support
+try:
+    import streamlit as st
+    if hasattr(st, "secrets"):
+        try:
+            for key in ["GROQ_API_KEY", "GROQ_MODEL", "DATASET_NAME"]:
+                if key in st.secrets and key not in os.environ:
+                    os.environ[key] = st.secrets[key]
+        except Exception:
+            # st.secrets throws an error if secrets.toml is missing locally
+            pass
+except ImportError:
+    pass
+
 
 @dataclass
 class Settings:
