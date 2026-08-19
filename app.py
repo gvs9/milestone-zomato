@@ -779,7 +779,10 @@ def render_results(response, preferences):
     for i, rec in enumerate(response.recommendations):
         cards_html += render_card(rec, i)
 
-    st.markdown(f'<div>{cards_html}</div>', unsafe_allow_html=True)
+    # Streamlit's markdown parser often breaks if there are newlines between HTML blocks,
+    # causing it to render raw text instead of actual HTML. Removing newlines fixes this.
+    clean_html = cards_html.replace('\n', '')
+    st.markdown(f'<div class="results-container">{clean_html}</div>', unsafe_allow_html=True)
 
 
 def render_footer():
