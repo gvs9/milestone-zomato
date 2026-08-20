@@ -719,7 +719,7 @@ def render_header():
         <div class="stats-badge">
             <span>{count:,} restaurants • {cities_count} localities</span>
             <span style="color: var(--border-subtle);">•</span>
-            <span class="powered">🧠 Powered by Groq LLaMA 3.3</span>
+            <span class="powered">🧠 Powered by Groq LLaMA 3 70B</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -793,7 +793,7 @@ def render_footer():
         <div class="brand">Zomato AI Recommender</div>
         <div class="meta">
             {count:,} restaurants • {len(get_cities())} localities • {len(get_cuisines())} cuisines<br/>
-            Powered by Groq LLaMA 3.3 + Zomato Dataset
+            Powered by Groq LLaMA 3 70B + Zomato Dataset
         </div>
     </div>
     """, unsafe_allow_html=True)

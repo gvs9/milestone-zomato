@@ -59,7 +59,7 @@ class Settings:
         default_factory=lambda: os.getenv("GROQ_API_KEY", "").strip()
     )
     groq_model: str = field(
-        default_factory=lambda: os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile").strip()
+        default_factory=lambda: os.getenv("GROQ_MODEL", "llama3-70b-8192").strip()
     )
     max_candidates: int = field(
         default_factory=lambda: int(os.getenv("MAX_CANDIDATES", "20"))
