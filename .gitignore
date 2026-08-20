@@ -41,3 +41,6 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+
+# Local Docs
+script.md
